@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,42 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <header
+          className="relative h-48"
+          style={{
+            backgroundImage: "url('/images/PopcornBg.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-blue-800 opacity-80"></div>
+          <div className="relative flex justify-between items-center h-full max-w-4xl px-4 mx-auto">
+            <div className="logo">
+              <Image
+                src="/favicon.ico"
+                alt="Logo"
+                width={48}
+                height={24}
+                className="h-12"
+              />
+            </div>
+            <div className="flex space-x-4">
+              <a
+                href="#"
+                className="text-gray-300 text-xl mr-12 hover:text-gray-500"
+              >
+                Home
+              </a>
+              <a href="#" className="text-gray-300 text-xl hover:text-gray-500">
+                About
+              </a>
+            </div>
+          </div>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
