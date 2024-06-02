@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import movieInput from "./components/movieInput";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,18 +55,7 @@ export default function RootLayout({
                 </Link>
               </div>
             </div>
-            <div className="relative flex flex-col items-center mt-4">
-              <label htmlFor="browseMovies" className="text-white text-xl mb-2">
-                Browse our movies
-              </label>
-              <input
-                type="text"
-                id="browseMovies"
-                name="browseMovies"
-                placeholder="Search for a movie..."
-                className="p-2 rounded-md bg-gray-800 text-white placeholder-gray-500"
-              />
-            </div>
+            {movieInput()}
           </div>
         </header>
 
