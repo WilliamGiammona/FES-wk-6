@@ -1,20 +1,41 @@
-import React from "react";
+// components/movieInput.tsx
 
-function movieInput() {
+import React, { useState } from "react";
+
+function MovieInput() {
+  const [inputValue, setInputValue] = useState("");
+  const [movieName, setMovieName] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setMovieName(inputValue);
+    }
+  };
+
   return (
-    <div className="relative flex flex-col items-center mt-4">
-      <label htmlFor="browseMovies" className="text-white text-xl mb-2">
-        Browse our movies
+    <div className="flex flex-col items-center p-4">
+      <label htmlFor="movieInput" className="mb-2 text-lg font-semibold">
+        Browse Movies
       </label>
       <input
+        id="movieInput"
         type="text"
-        id="browseMovies"
-        name="browseMovies"
-        placeholder="Search for a movie..."
-        className="p-2 rounded-md bg-gray-800 text-white placeholder-gray-500"
+        value={inputValue}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        className="mb-4 p-2 border border-gray-300 rounded text-black"
       />
+      {movieName && (
+        <div className="mt-4 text-xl">
+          You entered: <span className="font-bold">{movieName}</span>
+        </div>
+      )}
     </div>
   );
 }
 
-export default movieInput;
+export default MovieInput;

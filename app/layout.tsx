@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
-import MovieInput from "../components/movieInput";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,7 +54,6 @@ export default function RootLayout({
                 </Link>
               </div>
             </div>
-            <MovieInput />
           </div>
         </header>
 
